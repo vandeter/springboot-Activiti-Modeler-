@@ -1,0 +1,35 @@
+server:
+  port: 8080
+mybatis:
+    mapper-locations: classpath:mapper/*/*.xml
+spring:
+  application:
+    name: ServerPatrol
+  activiti:
+    database-schema-update: true
+    check-process-definitions: false
+    process-definition-location-prefix: classpath:/processes/
+    # check-process-definitions: false  #这个比较重要，不配置的话会扫描类路径下的processes下的.xml文件
+  datasource:    #数据库连接信息
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/activitibootdemo?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false
+    username: root
+    password: 123456
+    filters: stat,wall,slf4j
+    initialSize: 1
+    minIdle: 3
+    maxActive: 20
+    maxWait: 6000
+    maxPoolPreparedStatementPerConnectionSize: 20
+    minEvictableIdleTimeMillis: 30000
+    poolPreparedStatements: true
+    testOnBorrow: false
+    testOnReturn: false
+    testWhileIdle: true
+    useGlobalDataSourceStat: true
+    timeBetweenEvictionRunsMillis: 60000
+    validationQuery: select 'x'
+#security:
+  #basic:
+    #enabled: false

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.springbootdemo.mapper.ItemMapper" >
+    <resultMap id="BaseResultMap" type="com.example.springbootdemo.model.Item" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="detail" property="detail" jdbcType="VARCHAR" />
+        <result column="createtime" property="createTime" jdbcType="TIMESTAMP" />
+    </resultMap>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select *
+        from items
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+</mapper>
